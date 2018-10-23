@@ -13,6 +13,8 @@ Method | HTTP request | Description
 Retrieves the delivery report for the Omnimessage
 
 ### Example
+
+* Basic Authentication (basicAuth): 
 ```python
 from __future__ import print_function
 import time
