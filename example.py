@@ -1,6 +1,6 @@
 from pprint import pprint
 
-from omnichannel import OmnimessageApi, Viber, SMS, Omnimessage, Configuration, ApiClient
+from omnichannel import OmnimessageApi, Viber, SMS, Omnimessage, Configuration, ApiClient, WhatsApp, WhatsAppText
 from omnichannel.rest import ApiException
 
 
@@ -15,6 +15,13 @@ api_instance = OmnimessageApi(ApiClient(configuration))
 viber = Viber(
     sender="<sender name (optional)>",
     text="hello python",
+)
+
+whatsapp = WhatsApp(
+    sender="<sender name (optional)>",
+    text=WhatsAppText(
+        body="hello whatsapp"
+    )
 )
 
 sms = SMS(
