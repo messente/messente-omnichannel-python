@@ -77,8 +77,8 @@ sms = SMS(
     text="hello python",
 )
 
-# the order of items in scenarios means that sending via Viber will be attempted first,
-# and in case of Viber failure, the message will be delivered via SMS
+# The order of items in "messages" specifies the sending order: WhatsApp will be attempted
+# first, then Viber, and SMS as the final fallback
 omnimessage = Omnimessage(
     messages=(whatsapp, viber, sms),
     to="<recipient_phone_number>",
