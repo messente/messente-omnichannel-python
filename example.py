@@ -32,7 +32,7 @@ sms = SMS(
 # The order of items in "messages" specifies the sending order: WhatsApp will be attempted
 # first, then Viber, and SMS as the final fallback
 omnimessage = Omnimessage(
-    messages=(viber, sms),
+    messages=(whatsapp, viber, sms),
     to="<recipient_phone_number>",
 )  # Omnimessage | Omnimessage object that is to be sent
 
