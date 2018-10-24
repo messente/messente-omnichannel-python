@@ -29,6 +29,7 @@ class Channel(object):
     """
     SMS = "sms"
     VIBER = "viber"
+    WHATSAPP = "whatsapp"
 
     """
     Attributes:
