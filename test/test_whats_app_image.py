@@ -16,12 +16,12 @@ from __future__ import absolute_import
 import unittest
 
 import omnichannel
-from omnichannel.models.channel import Channel  # noqa: E501
+from omnichannel.models.whats_app_image import WhatsAppImage  # noqa: E501
 from omnichannel.rest import ApiException
 
 
-class TestChannel(unittest.TestCase):
-    """Channel unit test stubs"""
+class TestWhatsAppImage(unittest.TestCase):
+    """WhatsAppImage unit test stubs"""
 
     def setUp(self):
         pass
@@ -29,10 +29,10 @@ class TestChannel(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testChannel(self):
-        """Test Channel"""
+    def testWhatsAppImage(self):
+        """Test WhatsAppImage"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = omnichannel.models.channel.Channel()  # noqa: E501
+        # model = omnichannel.models.whats_app_image.WhatsAppImage()  # noqa: E501
         pass
 
 

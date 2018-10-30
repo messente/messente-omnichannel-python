@@ -1,5 +1,5 @@
 # omnichannel-api
-This is the Python library for the Messente Omnichannel API
+Messente's API which allows sending messages via various channels with fallback options.
 
 ## Requirements.
 
@@ -43,9 +43,13 @@ import omnichannel
 Please follow the [installation procedure](#installation--usage) and then run the following:
 
 ```python
+from __future__ import print_function
+import time
+import omnichannel
+from omnichannel.rest import ApiException
 from pprint import pprint
 
-from omnichannel import OmnimessageApi, Viber, SMS, Omnimessage
+from omnichannel import OmnimessageApi, Viber, SMS, Omnimessage, Configuration, ApiClient, WhatsApp, WhatsAppText
 from omnichannel.rest import ApiException
 
 # API information from https://dashboard.messente.com/api-settings
@@ -55,6 +59,13 @@ configuration.password = "<MESSENTE_API_PASSWORD>"
 
 # create an instance of the API class
 api_instance = OmnimessageApi(ApiClient(configuration))
+
+whatsapp = WhatsApp(
+    sender="<sender name (optional)>",
+    text=WhatsAppText(
+        body="hello whatsapp"
+    )
+)
 
 viber = Viber(
     sender="<sender name (optional)>",
@@ -66,10 +77,10 @@ sms = SMS(
     text="hello python",
 )
 
-# the order of items in scenarios means that sending via Viber will be attempted first,
-# and in case of Viber failure, the message will be delivered via SMS
+# The order of items in "messages" specifies the sending order: WhatsApp will be attempted
+# first, then Viber, and SMS as the final fallback
 omnimessage = Omnimessage(
-    messages=(viber, sms),
+    messages=(whatsapp, viber, sms),
     to="<recipient_phone_number>",
 )  # Omnimessage | Omnimessage object that is to be sent
 
@@ -114,6 +125,11 @@ Class | Method | HTTP request | Description
  - [SMS](docs/SMS.md)
  - [Status](docs/Status.md)
  - [Viber](docs/Viber.md)
+ - [WhatsApp](docs/WhatsApp.md)
+ - [WhatsAppAudio](docs/WhatsAppAudio.md)
+ - [WhatsAppDocument](docs/WhatsAppDocument.md)
+ - [WhatsAppImage](docs/WhatsAppImage.md)
+ - [WhatsAppText](docs/WhatsAppText.md)
 
 
 ## Documentation For Authorization
@@ -127,4 +143,5 @@ Class | Method | HTTP request | Description
 ## Author
 
 messente@messente.com
+
 

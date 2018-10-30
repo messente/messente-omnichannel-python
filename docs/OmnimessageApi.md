@@ -14,6 +14,8 @@ Method | HTTP request | Description
 Cancels a scheduled Omnimessage
 
 ### Example
+
+* Basic Authentication (basicAuth): 
 ```python
 from __future__ import print_function
 import time
@@ -64,7 +66,13 @@ void (empty response body)
 Sends an Omnimessage
 
 ### Example
+
+* Basic Authentication (basicAuth): 
 ```python
+from __future__ import print_function
+import time
+import omnichannel
+from omnichannel.rest import ApiException
 from pprint import pprint
 
 from omnichannel import OmnimessageApi, Viber, SMS, Omnimessage, Configuration, ApiClient
