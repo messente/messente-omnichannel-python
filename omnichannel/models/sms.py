@@ -35,7 +35,7 @@ class SMS(object):
         'sender': 'str',
         'validity': 'int',
         'text': 'str',
-        'autoconvert': 'float',
+        'autoconvert': 'str',
         'udh': 'str',
         'channel': 'str'
     }
@@ -49,7 +49,7 @@ class SMS(object):
         'channel': 'channel'
     }
 
-    def __init__(self, sender=None, validity=None, text=None, autoconvert=None, udh=None):  # noqa: E501
+    def __init__(self, sender=None, validity=None, text=None, autoconvert=None, udh=None, channel='sms'):  # noqa: E501
         """SMS - a model defined in OpenAPI"""  # noqa: E501
 
         self._sender = None
@@ -57,8 +57,8 @@ class SMS(object):
         self._text = None
         self._autoconvert = None
         self._udh = None
+        self._channel = None
         self.discriminator = None
-        self.channel = "sms"
 
         if sender is not None:
             self.sender = sender
@@ -69,6 +69,8 @@ class SMS(object):
             self.autoconvert = autoconvert
         if udh is not None:
             self.udh = udh
+        if channel is not None:
+            self.channel = channel
 
     @property
     def sender(self):
@@ -148,7 +150,7 @@ class SMS(object):
         Defines how non-GSM characters will be treated: - \"on\" Use replacement settings from the account's [API Auto Replace settings page](https://dashboard.messente.com/api-settings/auto-replace)(default) - \"full\" All non GSM 03.38 characters will be replaced with suitable alternatives - \"off\" Message content is not modified in any way   # noqa: E501
 
         :return: The autoconvert of this SMS.  # noqa: E501
-        :rtype: float
+        :rtype: str
         """
         return self._autoconvert
 
@@ -159,8 +161,14 @@ class SMS(object):
         Defines how non-GSM characters will be treated: - \"on\" Use replacement settings from the account's [API Auto Replace settings page](https://dashboard.messente.com/api-settings/auto-replace)(default) - \"full\" All non GSM 03.38 characters will be replaced with suitable alternatives - \"off\" Message content is not modified in any way   # noqa: E501
 
         :param autoconvert: The autoconvert of this SMS.  # noqa: E501
-        :type: float
+        :type: str
         """
+        allowed_values = ["full", "on", "off"]  # noqa: E501
+        if autoconvert not in allowed_values:
+            raise ValueError(
+                "Invalid value for `autoconvert` ({0}), must be one of {1}"  # noqa: E501
+                .format(autoconvert, allowed_values)
+            )
 
         self._autoconvert = autoconvert
 
@@ -186,6 +194,27 @@ class SMS(object):
         """
 
         self._udh = udh
+
+    @property
+    def channel(self):
+        """Gets the channel of this SMS.  # noqa: E501
+
+
+        :return: The channel of this SMS.  # noqa: E501
+        :rtype: str
+        """
+        return self._channel
+
+    @channel.setter
+    def channel(self, channel):
+        """Sets the channel of this SMS.
+
+
+        :param channel: The channel of this SMS.  # noqa: E501
+        :type: str
+        """
+
+        self._channel = channel
 
     def to_dict(self):
         """Returns the model properties as a dict"""

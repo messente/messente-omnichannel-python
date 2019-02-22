@@ -37,6 +37,7 @@ class Status(object):
     DELETED = "DELETED"
     EXPIRED = "EXPIRED"
     NACK = "NACK"
+    SEEN = "SEEN"
 
     """
     Attributes:

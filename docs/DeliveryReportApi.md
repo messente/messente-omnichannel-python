@@ -24,8 +24,8 @@ from pprint import pprint
 
 # Configure HTTP basic authorization: basicAuth
 configuration = omnichannel.Configuration()
-configuration.username = "<MESSENTE_API_USERNAME>"
-configuration.password = "<MESSENTE_API_PASSWORD>"
+configuration.username = 'YOUR_USERNAME'
+configuration.password = 'YOUR_PASSWORD'
 
 # create an instance of the API class
 api_instance = omnichannel.DeliveryReportApi(omnichannel.ApiClient(configuration))

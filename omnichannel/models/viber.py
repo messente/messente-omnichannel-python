@@ -51,7 +51,7 @@ class Viber(object):
         'channel': 'channel'
     }
 
-    def __init__(self, sender=None, validity=None, text=None, image_url=None, button_url=None, button_text=None):  # noqa: E501
+    def __init__(self, sender=None, validity=None, text=None, image_url=None, button_url=None, button_text=None, channel='viber'):  # noqa: E501
         """Viber - a model defined in OpenAPI"""  # noqa: E501
 
         self._sender = None
@@ -60,8 +60,8 @@ class Viber(object):
         self._image_url = None
         self._button_url = None
         self._button_text = None
+        self._channel = None
         self.discriminator = None
-        self.channel = "viber"
 
         if sender is not None:
             self.sender = sender
@@ -75,6 +75,8 @@ class Viber(object):
             self.button_url = button_url
         if button_text is not None:
             self.button_text = button_text
+        if channel is not None:
+            self.channel = channel
 
     @property
     def sender(self):
@@ -213,6 +215,27 @@ class Viber(object):
         """
 
         self._button_text = button_text
+
+    @property
+    def channel(self):
+        """Gets the channel of this Viber.  # noqa: E501
+
+
+        :return: The channel of this Viber.  # noqa: E501
+        :rtype: str
+        """
+        return self._channel
+
+    @channel.setter
+    def channel(self, channel):
+        """Sets the channel of this Viber.
+
+
+        :param channel: The channel of this Viber.  # noqa: E501
+        :type: str
+        """
+
+        self._channel = channel
 
     def to_dict(self):
         """Returns the model properties as a dict"""
