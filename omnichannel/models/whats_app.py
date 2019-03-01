@@ -32,37 +32,39 @@ class WhatsApp(object):
                             and the value is json key in definition.
     """
     openapi_types = {
+        'sender': 'str',
         'validity': 'int',
         'text': 'WhatsAppText',
         'image': 'WhatsAppImage',
         'document': 'WhatsAppDocument',
         'audio': 'WhatsAppAudio',
-        'sender': 'object',
         'channel': 'str'
     }
 
     attribute_map = {
+        'sender': 'sender',
         'validity': 'validity',
         'text': 'text',
         'image': 'image',
         'document': 'document',
         'audio': 'audio',
-        'sender': 'sender',
         'channel': 'channel'
     }
 
-    def __init__(self, validity=None, text=None, image=None, document=None, audio=None, sender=None):  # noqa: E501
+    def __init__(self, sender=None, validity=None, text=None, image=None, document=None, audio=None, channel='whatsapp'):  # noqa: E501
         """WhatsApp - a model defined in OpenAPI"""  # noqa: E501
 
+        self._sender = None
         self._validity = None
         self._text = None
         self._image = None
         self._document = None
         self._audio = None
-        self._sender = None
+        self._channel = None
         self.discriminator = None
-        self.channel = "whatsapp"
 
+        if sender is not None:
+            self.sender = sender
         if validity is not None:
             self.validity = validity
         if text is not None:
@@ -73,8 +75,31 @@ class WhatsApp(object):
             self.document = document
         if audio is not None:
             self.audio = audio
-        if sender is not None:
-            self.sender = sender
+        if channel is not None:
+            self.channel = channel
+
+    @property
+    def sender(self):
+        """Gets the sender of this WhatsApp.  # noqa: E501
+
+        Phone number or alphanumeric sender name  # noqa: E501
+
+        :return: The sender of this WhatsApp.  # noqa: E501
+        :rtype: str
+        """
+        return self._sender
+
+    @sender.setter
+    def sender(self, sender):
+        """Sets the sender of this WhatsApp.
+
+        Phone number or alphanumeric sender name  # noqa: E501
+
+        :param sender: The sender of this WhatsApp.  # noqa: E501
+        :type: str
+        """
+
+        self._sender = sender
 
     @property
     def validity(self):
@@ -184,27 +209,25 @@ class WhatsApp(object):
         self._audio = audio
 
     @property
-    def sender(self):
-        """Gets the sender of this WhatsApp.  # noqa: E501
+    def channel(self):
+        """Gets the channel of this WhatsApp.  # noqa: E501
 
-        Phone number in e.164 format  # noqa: E501
 
-        :return: The sender of this WhatsApp.  # noqa: E501
-        :rtype: object
+        :return: The channel of this WhatsApp.  # noqa: E501
+        :rtype: str
         """
-        return self._sender
+        return self._channel
 
-    @sender.setter
-    def sender(self, sender):
-        """Sets the sender of this WhatsApp.
+    @channel.setter
+    def channel(self, channel):
+        """Sets the channel of this WhatsApp.
 
-        Phone number in e.164 format  # noqa: E501
 
-        :param sender: The sender of this WhatsApp.  # noqa: E501
-        :type: object
+        :param channel: The channel of this WhatsApp.  # noqa: E501
+        :type: str
         """
 
-        self._sender = sender
+        self._channel = channel
 
     def to_dict(self):
         """Returns the model properties as a dict"""

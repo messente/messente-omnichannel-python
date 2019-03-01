@@ -21,7 +21,6 @@ from omnichannel.models.delivery_result import DeliveryResult
 from omnichannel.models.err import Err
 from omnichannel.models.error_item import ErrorItem
 from omnichannel.models.error_response import ErrorResponse
-from omnichannel.models.message import Message
 from omnichannel.models.message_result import MessageResult
 from omnichannel.models.omni_message_create_success_response import OmniMessageCreateSuccessResponse
 from omnichannel.models.omnimessage import Omnimessage

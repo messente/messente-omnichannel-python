@@ -1,5 +1,7 @@
-# omnichannel-api
-Messente's API which allows sending messages via various channels with fallback options.
+# {{{projectName}}}
+{{#appDescription}}
+{{{appDescription}}}
+{{/appDescription}}
 
 ## Requirements.
 
@@ -21,7 +23,7 @@ pip install git+https://github.com/messente/messente-omnichannel-python.git
 
 Then import the package:
 ```python
-import omnichannel 
+import {{{packageName}}} 
 ```
 
 ### Setuptools
@@ -35,7 +37,7 @@ python setup.py install --user
 
 Then import the package:
 ```python
-import omnichannel
+import {{{packageName}}}
 ```
 
 ## Getting Started
@@ -99,47 +101,41 @@ except ApiException as e:
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://api.messente.com/v1*
+All URIs are relative to *{{basePath}}*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DeliveryReportApi* | [**retrieve_delivery_report**](docs//DeliveryReportApi.md#retrieve_delivery_report) | **GET** /omnimessage/{omnimessage_id}/status | Retrieves the delivery report for the Omnimessage
-*OmnimessageApi* | [**cancel_scheduled_message**](docs//OmnimessageApi.md#cancel_scheduled_message) | **DELETE** /omnimessage/{omnimessage_id} | Cancels a scheduled Omnimessage
-*OmnimessageApi* | [**send_omnimessage**](docs//OmnimessageApi.md#send_omnimessage) | **POST** /omnimessage | Sends an Omnimessage
-
+{{#apiInfo}}{{#apis}}{{#operations}}{{#operation}}*{{classname}}* | [**{{operationId}}**]({{apiDocPath}}/{{classname}}.md#{{operationIdLowerCase}}) | **{{httpMethod}}** {{path}} | {{#summary}}{{summary}}{{/summary}}
+{{/operation}}{{/operations}}{{/apis}}{{/apiInfo}}
 
 ## Documentation For Models
 
- - [Channel](docs//Channel.md)
- - [DeliveryReportResponse](docs//DeliveryReportResponse.md)
- - [DeliveryResult](docs//DeliveryResult.md)
- - [Err](docs//Err.md)
- - [ErrorItem](docs//ErrorItem.md)
- - [ErrorResponse](docs//ErrorResponse.md)
- - [MessageResult](docs//MessageResult.md)
- - [OmniMessageCreateSuccessResponse](docs//OmniMessageCreateSuccessResponse.md)
- - [Omnimessage](docs//Omnimessage.md)
- - [ResponseErrorCode](docs//ResponseErrorCode.md)
- - [ResponseErrorTitle](docs//ResponseErrorTitle.md)
- - [SMS](docs//SMS.md)
- - [Status](docs//Status.md)
- - [Viber](docs//Viber.md)
- - [WhatsApp](docs//WhatsApp.md)
- - [WhatsAppAudio](docs//WhatsAppAudio.md)
- - [WhatsAppDocument](docs//WhatsAppDocument.md)
- - [WhatsAppImage](docs//WhatsAppImage.md)
- - [WhatsAppText](docs//WhatsAppText.md)
-
+{{#models}}{{#model}} - [{{{classname}}}]({{modelDocPath}}/{{{classname}}}.md)
+{{/model}}{{/models}}
 
 ## Documentation For Authorization
 
+{{^authMethods}} All endpoints do not require authorization.
+{{/authMethods}}{{#authMethods}}{{#last}} Authentication schemes defined for the API:{{/last}}{{/authMethods}}
+{{#authMethods}}## {{{name}}}
 
-## basicAuth
+{{#isApiKey}}- **Type**: API key
+- **API key parameter name**: {{{keyParamName}}}
+- **Location**: {{#isKeyInQuery}}URL query string{{/isKeyInQuery}}{{#isKeyInHeader}}HTTP header{{/isKeyInHeader}}
+{{/isApiKey}}
+{{#isBasic}}- **Type**: HTTP basic authentication
+{{/isBasic}}
+{{#isOAuth}}- **Type**: OAuth
+- **Flow**: {{{flow}}}
+- **Authorization URL**: {{{authorizationUrl}}}
+- **Scopes**: {{^scopes}}N/A{{/scopes}}
+{{#scopes}} - **{{{scope}}}**: {{{description}}}
+{{/scopes}}
+{{/isOAuth}}
 
-- **Type**: HTTP basic authentication
-
+{{/authMethods}}
 
 ## Author
 
-messente@messente.com
-
+{{#apiInfo}}{{#apis}}{{^hasMore}}{{infoEmail}}
+{{/hasMore}}{{/apis}}{{/apiInfo}}
